@@ -44,7 +44,18 @@ def main():
 
     st.markdown("---")
     st.write("Este App foi construído no curso de Programação em IA Generativa.")
+    if st.button("Q"):
+        dados = pd.DataFrame(
+            [[horas_estudo, faltas, nota_p1]],
+            columns=['horas_estudo', 'faltas', 'nota_p1']
+        )
 
+        resultado = modelo.predict(dados)[0]
+
+        if resultado == 1:
+            st.success("✅ Aluno aprovado")
+        else:
+            st.error("❌ Aluno reprovado")
 
 if __name__ == "__main__":
     main()
